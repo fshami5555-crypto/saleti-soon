@@ -4,55 +4,52 @@ import ChatBot from './components/ChatBot';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen white-bg flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
-      {/* Subtle Background Decorative Elements */}
-      <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] -z-10"></div>
-      <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-slate-50 rounded-full blur-[120px] -z-10"></div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
+      {/* عناصر زخرفية خفيفة جداً */}
+      <div className="absolute top-[-5%] right-[-5%] w-[30%] h-[30%] bg-blue-50/50 rounded-full blur-[100px] -z-10"></div>
+      <div className="absolute bottom-[-5%] left-[-5%] w-[30%] h-[30%] bg-slate-50/50 rounded-full blur-[100px] -z-10"></div>
 
-      <header className="mb-12 animate-in fade-in zoom-in duration-700">
+      <header className="mb-12 animate-in fade-in zoom-in duration-1000">
         <img 
           src="https://i.ibb.co/5gQmCZbg/logo-1755179078949.png" 
           alt="Saleti Logo" 
-          className="h-28 md:h-36 object-contain animate-float drop-shadow-sm"
+          className="h-32 md:h-44 object-contain animate-float drop-shadow-xl"
         />
       </header>
 
-      <main className="text-center max-w-4xl mx-auto space-y-10 z-10">
+      <main className="text-center max-w-4xl mx-auto space-y-12 z-10">
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight">
             سنعود إليكم <span className="text-[#1e3a8a]">قريباً</span>
           </h1>
-          <p className="text-lg md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed px-4">
-            الموقع حالياً تحت الصيانة والتطوير لتقديم تجربة تسوق استثنائية تفوق توقعاتكم. نحن نعمل بجد لنقدم لكم الأفضل!
+          <p className="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed px-4">
+            الموقع حالياً تحت الصيانة لتطوير تجربة تسوق أفضل. <br/> شكراً لثقتكم بنا.
           </p>
         </div>
 
-        <div className="pt-8 space-y-8">
-          <div className="space-y-4">
-            <p className="text-slate-400 text-sm md:text-base font-bold uppercase tracking-widest">كن أول من يعلم عند الإطلاق</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <input 
-                type="email" 
-                placeholder="بريدك الإلكتروني" 
-                className="w-full sm:w-80 bg-slate-50 border border-slate-200 rounded-full px-6 py-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] transition-all"
-              />
-              <button className="w-full sm:w-auto bg-[#1e3a8a] hover:bg-[#1e40af] text-white px-10 py-4 rounded-full font-bold shadow-lg shadow-blue-900/10 transition-all hover:scale-105 active:scale-95">
-                اشترك الآن
-              </button>
-            </div>
+        <div className="pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <input 
+              type="email" 
+              placeholder="بريدك الإلكتروني ليصلك جديدنا" 
+              className="w-full sm:w-80 bg-white border border-slate-200 rounded-full px-6 py-4 text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] transition-all"
+            />
+            <button className="w-full sm:w-auto bg-[#1e3a8a] hover:bg-[#1e40af] text-white px-10 py-4 rounded-full font-bold shadow-xl shadow-blue-900/10 transition-all hover:scale-105 active:scale-95">
+              اشترك الآن
+            </button>
           </div>
         </div>
       </main>
 
-      <footer className="mt-20 flex flex-col items-center space-y-8 animate-in fade-in duration-1000">
-        <div className="flex gap-4 md:gap-6">
+      <footer className="mt-24 flex flex-col items-center space-y-10 animate-in fade-in duration-1000">
+        <div className="flex gap-4 md:gap-8">
           <SocialLink icon="facebook" href="https://web.facebook.com/Saletiweb/?_rdc=1&_rdr#" />
           <SocialLink icon="instagram" href="https://www.instagram.com/saletiweb/" />
           <SocialLink icon="youtube" href="https://www.youtube.com/@saletiweb?reload=9" />
           <SocialLink icon="whatsapp" href="https://wa.me/962796933486" />
         </div>
-        <div className="text-center space-y-2">
-          <p className="text-slate-400 text-sm">
+        <div className="text-center">
+          <p className="text-slate-400 text-sm font-medium">
             &copy; {new Date().getFullYear()} سلتي ويب. جميع الحقوق محفوظة.
           </p>
         </div>
@@ -88,13 +85,13 @@ const SocialLink = ({ icon, href }: { icon: string; href: string }) => {
       href={href} 
       target="_blank"
       rel="noopener noreferrer"
-      className="w-12 h-12 flex items-center justify-center rounded-full bg-slate-50 border border-slate-200 text-slate-600 hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all duration-300 hover:-translate-y-1 shadow-sm"
+      className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-slate-100 text-slate-500 hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] hover:shadow-xl hover:shadow-blue-900/10 transition-all duration-300 hover:-translate-y-2 shadow-sm"
       title={icon}
     >
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        width="20" 
-        height="20" 
+        width="24" 
+        height="24" 
         viewBox="0 0 24 24" 
         fill="none" 
         stroke="currentColor" 
