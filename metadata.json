@@ -1,0 +1,8 @@
+{
+  "name": "Saleti Web - Coming Soon",
+  "description": "A professional Arabic landing page for Saleti Web, currently under maintenance with a built-in AI assistant.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
