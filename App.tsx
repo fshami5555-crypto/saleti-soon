@@ -1,8 +1,19 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import ChatBot from './components/ChatBot';
 
 const App: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim() && email.includes('@')) {
+      setIsSubscribed(true);
+      // هنا يمكن إضافة كود لإرسال الإيميل لقاعدة بيانات مستقبلاً
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden">
       {/* عناصر زخرفية خفيفة جداً */}
@@ -17,7 +28,7 @@ const App: React.FC = () => {
         />
       </header>
 
-      <main className="text-center max-w-4xl mx-auto space-y-12 z-10">
+      <main className="text-center max-w-4xl mx-auto space-y-12 z-10 w-full">
         <div className="space-y-6">
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight">
             سنعود إليكم <span className="text-[#1e3a8a]">قريباً</span>
@@ -27,17 +38,41 @@ const App: React.FC = () => {
           </p>
         </div>
 
-        <div className="pt-4">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <input 
-              type="email" 
-              placeholder="بريدك الإلكتروني ليصلك جديدنا" 
-              className="w-full sm:w-80 bg-white border border-slate-200 rounded-full px-6 py-4 text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] transition-all"
-            />
-            <button className="w-full sm:w-auto bg-[#1e3a8a] hover:bg-[#1e40af] text-white px-10 py-4 rounded-full font-bold shadow-xl shadow-blue-900/10 transition-all hover:scale-105 active:scale-95">
-              اشترك الآن
-            </button>
-          </div>
+        <div className="pt-4 min-h-[100px] flex justify-center items-center">
+          {!isSubscribed ? (
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <input 
+                type="email" 
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="بريدك الإلكتروني ليصلك جديدنا" 
+                className="w-full sm:flex-1 bg-white border border-slate-200 rounded-full px-6 py-4 text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] transition-all"
+              />
+              <button 
+                type="submit"
+                className="w-full sm:w-auto bg-[#1e3a8a] hover:bg-[#1e40af] text-white px-10 py-4 rounded-full font-bold shadow-xl shadow-blue-900/10 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+              >
+                اشترك الآن
+              </button>
+            </form>
+          ) : (
+            <div className="bg-green-50 border border-green-100 p-8 rounded-[2rem] shadow-xl shadow-green-900/5 animate-in zoom-in fade-in duration-700 max-w-md w-full">
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-green-800 mb-2">تم الاشتراك بنجاح!</h3>
+              <p className="text-green-700 font-medium">تم الاشتراك سيتم اعلامكم بكل جديد شكراً لكم</p>
+              <button 
+                onClick={() => { setIsSubscribed(false); setEmail(''); }}
+                className="mt-6 text-sm text-green-600 hover:text-green-800 underline font-semibold"
+              >
+                الاشتراك بإيميل آخر؟
+              </button>
+            </div>
+          )}
         </div>
       </main>
 
